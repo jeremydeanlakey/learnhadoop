@@ -1,0 +1,28 @@
+# should have used DOUBLE instead of decimal for times
+
+CREATE EXTERNAL TABLE IF NOT EXISTS Sample1(
+        Start_time DECIMAL,
+        End_time DECIMAL,
+        Magnitude DECIMAL,
+        Is_write STRING, 
+        Size INT)
+    COMMENT 'first attempt'
+    ROW FORMAT DELIMITED
+    FIELDS TERMINATED BY ','
+    STORED AS TEXTFILE
+    location '/user/test1';
+
+CREATE TABLE IF NOT EXISTS sample1(
+        Start_time DECIMAL,
+        End_time DECIMAL,
+        Magnitude DECIMAL,
+        Is_write STRING, 
+        Size INT)
+    COMMENT 'first attempt'
+    ROW FORMAT DELIMITED
+    FIELDS TERMINATED BY ','
+    STORED AS ORC;
+
+INSERT OVERWRITE TABLE sample1 SELECT * FROM Sample1;
+
+
