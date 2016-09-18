@@ -1,0 +1,99 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS Test2(
+        Id INT,
+        Name STRING, 
+        Value DOUBLE
+        )
+    COMMENT 'first attempt'
+    ROW FORMAT DELIMITED
+    FIELDS TERMINATED BY ','
+    STORED AS TEXTFILE
+    location '/user/test2';
+
+# OK
+# Time taken: 0.509 seconds
+
+
+CREATE TABLE IF NOT EXISTS test2(
+        Id INT,
+        Name STRING, 
+        Value DOUBLE
+        )
+    COMMENT 'second attempt'
+    ROW FORMAT DELIMITED
+    FIELDS TERMINATED BY ','
+    STORED AS ORC;
+
+# OK
+# Time taken: 0.18 seconds
+
+
+
+
+
+INSERT OVERWRITE TABLE test2 SELECT * FROM Test2;
+
+# WARNING: Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+# Query ID = hadoop_20160916181513_69807071-afc7-4774-8d9c-9bf6c8983b9f
+# Total jobs = 3
+# Launching Job 1 out of 3
+# Number of reduce tasks is set to 0 since there's no reduce operator
+# Job running in-process (local Hadoop)
+# 2016-09-16 18:15:16,699 Stage-1 map = 0%,  reduce = 0%
+# 2016-09-16 18:15:28,728 Stage-1 map = 25%,  reduce = 0%
+# 2016-09-16 18:15:37,753 Stage-1 map = 100%,  reduce = 0%
+# Ended Job = job_local722619554_0001
+# Stage-4 is selected by condition resolver.
+# Stage-3 is filtered out by condition resolver.
+# Stage-5 is filtered out by condition resolver.
+# Moving data to directory hdfs://localhost:9000/user/test2/.hive-staging_hive_2016-09-16_18-15-13_830_1385406944870730051-1/-ext-10000
+# Loading data to table default.test2
+# MapReduce Jobs Launched: 
+# Stage-Stage-1:  HDFS Read: 596983606 HDFS Write: 578826573 SUCCESS
+# Total MapReduce CPU Time Spent: 0 msec
+# OK
+# Time taken: 29.216 seconds
+
+
+
+
+
+
+# used for help: http://www.cloudera.com/documentation/archive/impala/2-x/2-1-x/topics/impala_create_table.html
+CREATE TABLE IF NOT EXISTS test2step2
+  COMMENT 'here goes nothing'
+AS
+  SELECT
+    Id,
+    CONCAT(Name, ' Smith'),
+    ROUND(Value)
+  FROM test2
+;
+
+# WARNING: Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+# Query ID = hadoop_20160916213848_998b6ce6-e27c-4d86-a059-56dedbaa18e7
+# Total jobs = 3
+# Launching Job 1 out of 3
+# Number of reduce tasks is set to 0 since there's no reduce operator
+# Job running in-process (local Hadoop)
+# 2016-09-16 21:38:50,472 Stage-1 map = 0%,  reduce = 0%
+# 2016-09-16 21:39:07,491 Stage-1 map = 26%,  reduce = 0%
+# 2016-09-16 21:39:19,508 Stage-1 map = 100%,  reduce = 0%
+# 2016-09-16 21:39:25,514 Stage-1 map = 50%,  reduce = 0%
+# 2016-09-16 21:39:26,518 Stage-1 map = 100%,  reduce = 0%
+# Ended Job = job_local588320637_0002
+# Stage-4 is selected by condition resolver.
+# Stage-3 is filtered out by condition resolver.
+# Stage-5 is filtered out by condition resolver.
+# Moving data to directory hdfs://localhost:9000/user/hive/warehouse/.hive-staging_hive_2016-09-16_21-38-48_707_2011011412528574214-1/-ext-10002
+# Moving data to directory hdfs://localhost:9000/user/hive/warehouse/test2step2
+# MapReduce Jobs Launched: 
+# Stage-Stage-1:  HDFS Read: 1235914761 HDFS Write: 1053552625 SUCCESS
+# Total MapReduce CPU Time Spent: 0 msec
+# OK
+# Time taken: 37.963 seconds
+
+# just to check:
+select * from test2step2 limit 10;
+
+
+
