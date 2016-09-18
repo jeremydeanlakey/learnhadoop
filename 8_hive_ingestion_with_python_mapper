@@ -1,0 +1,52 @@
+
+
+CREATE TABLE test3 (
+        Id INT,
+        Name STRING, 
+        Value BIGINT
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ',';
+
+# OK
+# Time taken: 0.043 seconds
+
+
+add FILE 8_python_mapper.py;
+
+INSERT OVERWRITE TABLE test3
+SELECT
+  TRANSFORM (Id, Name, Value)
+  USING 'python 8_python_mapper.py'
+  AS (Id, Name, Value)
+FROM Test2;
+
+
+
+
+SELECT * from test3 limit 10;
+
+
+# WARNING: Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+# Query ID = hadoop_20160916221755_707a6d06-ccd1-4f8b-9a3d-90a6b03fef22
+# Total jobs = 3
+# Launching Job 1 out of 3
+# Number of reduce tasks is set to 0 since there's no reduce operator
+# Job running in-process (local Hadoop)
+# 2016-09-16 22:17:56,469 Stage-1 map = 0%,  reduce = 0%
+# 2016-09-16 22:18:19,497 Stage-1 map = 26%,  reduce = 0%
+# 2016-09-16 22:18:42,520 Stage-1 map = 100%,  reduce = 0%
+# 2016-09-16 22:18:48,527 Stage-1 map = 50%,  reduce = 0%
+# 2016-09-16 22:18:53,532 Stage-1 map = 100%,  reduce = 0%
+# Ended Job = job_local738037354_0005
+# Stage-4 is selected by condition resolver.
+# Stage-3 is filtered out by condition resolver.
+# Stage-5 is filtered out by condition resolver.
+# Moving data to directory hdfs://localhost:9000/user/hive/warehouse/test3/.hive-staging_hive_2016-09-16_22-17-55_052_2483888090535287967-1/-ext-10000
+# Loading data to table default.test3
+# MapReduce Jobs Launched: 
+# Stage-Stage-1:  HDFS Read: 1873389543 HDFS Write: 1258562948 SUCCESS
+# Total MapReduce CPU Time Spent: 0 msec
+# OK
+# Time taken: 58.637 seconds
+
