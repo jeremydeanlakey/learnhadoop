@@ -5,7 +5,7 @@ tar -zxvf sqoop-1.4.6.tar.gz
 
 
 echo "
-export SQOOP_HOME=/home/hadoop/sqoop-1.4.6/
+export SQOOP_HOME=/home/hadoop/sqoop-1.4.6
 export PATH=\$PATH:\$SQOOP_HOME/bin
 " >> .bashrc
 
