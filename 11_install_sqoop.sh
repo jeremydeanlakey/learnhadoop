@@ -1,7 +1,6 @@
 cd ~
-wget 'http://download.nextag.com/apache/sqoop/1.4.6/sqoop-1.4.6.tar.gz'
-
-tar -zxvf sqoop-1.4.6.tar.gz
+wget 'https://www.apache.org/dist/sqoop/1.4.6/sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz'
+tar -zxvf sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz
 
 
 echo "
