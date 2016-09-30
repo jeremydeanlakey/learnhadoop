@@ -1,1 +1,12 @@
 SHOW TABLES;
+
+
+CREATE TABLE emp (
+id INT, 
+name VARCHAR(20),
+deg VARCHAR(20), 
+salary INT, 
+dept VARCHAR(10)
+);
+
+
