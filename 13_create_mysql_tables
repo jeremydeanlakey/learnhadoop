@@ -10,3 +10,17 @@ dept VARCHAR(10)
 );
 
 
+CREATE TABLE emp_add (
+id INT, 
+hno VARCHAR(20),
+street VARCHAR(20), 
+city VARCHAR(20) 
+);
+
+
+CREATE TABLE emp_contact (
+id INT, 
+phno VARCHAR(20),
+email VARCHAR(20)
+);
+
