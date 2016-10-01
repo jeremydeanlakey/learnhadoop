@@ -1,4 +1,5 @@
-SHOW TABLES;
+CREATE DATABASE userdb;
+USE userdb;
 
 
 CREATE TABLE emp (
