@@ -25,3 +25,14 @@ phno VARCHAR(20),
 email VARCHAR(20)
 );
 
+INSERT INTO emp	
+(id, name, deg, salary, dept)
+VALUES
+(1201, "gopal", "manager", 50000, "TP"),
+(1202, "manisha", "Proof reader", 50000, "TP"),
+(1203, "khalil", "php dev", 30000, "AC"),
+(1204, "prasanth", "php dev", 30000, "AC"),
+(1204, "kranthi", "admin", 20000, "TP")
+;
+
+
