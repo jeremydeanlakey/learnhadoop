@@ -35,4 +35,24 @@ VALUES
 (1204, "kranthi", "admin", 20000, "TP")
 ;
 
+INSERT INTO emp_add 
+(id, hno, street, city)
+VALUES
+(1201, "288A", "vgiri", "jublee"), 
+(1202, "108I", "aoc", "sec-bad"), 
+(1203, "144Z", "pgutta", "hyd"), 
+(1204, "78B", "old city", "sec-bad"), 
+(1205, "720X", "hitec", "sec-bad")
+;
+
+
+INSERT INTO emp_contact 
+(id, phno, email)
+VALUES
+(1201, 2356742, "gopal@tp.com"), 
+(1202, 1661663, "manisha@tp.com"), 
+(1203, 8887776, "khalil@ac.com"), 
+(1204, 9988774, "prasanth@ac.com"), 
+(1205, 1231231, "kranthi@tp.com")
+;
 
