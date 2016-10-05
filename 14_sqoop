@@ -1,0 +1,5 @@
+sqoop import \
+--connect jdbc:mysql://localhost/userdb \
+--username root \
+--table emp --m 1
+
