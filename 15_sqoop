@@ -1,5 +1,6 @@
 sqoop import \
 --connect jdbc:mysql://localhost/userdb \
 --username root \
+--password root \
 --table emp --m 1
 
