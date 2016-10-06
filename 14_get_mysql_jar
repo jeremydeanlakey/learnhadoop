@@ -1,0 +1,5 @@
+# download from http://dev.mysql.com/downloads/connector/j/
+# tar -xzvf mysql-connector-java-5.1.40.tar.gz
+# copy the jar into $SQOOP_HOME/lib
+
+
