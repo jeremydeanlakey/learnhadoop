@@ -4,3 +4,16 @@ sqoop import \
 --password root \
 --table emp --m 1
 
+$HADOOP_HOME/bin/hadoop fs -cat /emp/part-m-*
+
+
+sqoop import \
+--connect jdbc:mysql://localhost/userdb \
+--username root \
+--password root \
+--table emp_add \
+--m 1 \
+--target-dir /queryresult
+
+$HADOOP_HOME/bin/hadoop fs -cat /queryresult/part-m-*
+
