@@ -4,7 +4,7 @@ sqoop import \
 --password root \
 --table emp --m 1
 
-$HADOOP_HOME/bin/hadoop fs -cat /emp/part-m-*
+$HADOOP_HOME/bin/hadoop fs -cat emp/part-m-*
 
 
 sqoop import \
