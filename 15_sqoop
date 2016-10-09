@@ -17,3 +17,13 @@ sqoop import \
 
 $HADOOP_HOME/bin/hadoop fs -cat /queryresult/part-m-*
 
+sqoop import \
+--connect jdbc:mysql://localhost/userdb \
+--username root \
+--password root \
+--table emp_add \
+--m 1 \
+--where "city ='sec-bad'" \
+--target-dir /wherequery
+
+
