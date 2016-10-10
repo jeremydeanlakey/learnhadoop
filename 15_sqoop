@@ -17,6 +17,7 @@ sqoop import \
 
 $HADOOP_HOME/bin/hadoop fs -cat /queryresult/part-m-*
 
+
 sqoop import \
 --connect jdbc:mysql://localhost/userdb \
 --username root \
@@ -26,4 +27,4 @@ sqoop import \
 --where "city ='sec-bad'" \
 --target-dir /wherequery
 
-
+$HADOOP_HOME/bin/hadoop fs -cat /wherequery/part-m-*
