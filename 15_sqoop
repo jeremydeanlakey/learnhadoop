@@ -40,7 +40,7 @@ sqoop import \
 --check-column id \
 --last-value 1205
 
-$HADOOP_HOME/bin/hadoop fs -cat /queryresult/part-m-*
+$HADOOP_HOME/bin/hadoop fs -cat /queryresult/part-m-1*
 
 
 
