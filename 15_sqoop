@@ -34,7 +34,7 @@ sqoop import \
 --connect jdbc:mysql://localhost/userdb \
 --username root \
 --password root \
---table emp_add \
+--table emp \
 --m 1 \
 --incremental append \
 --check-column id \
