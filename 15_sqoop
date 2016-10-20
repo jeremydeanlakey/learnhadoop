@@ -42,4 +42,8 @@ sqoop import \
 
 $HADOOP_HOME/bin/hadoop fs -cat emp/part-m-*1
 
+sqoop import-all-tables \
+--connect jdbc:mysql://localhost/userdb \
+--username root
+
 
