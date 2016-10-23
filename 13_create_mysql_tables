@@ -58,3 +58,6 @@ VALUES
 (1205, 1231231, "kranthi@tp.com")
 ;
 
+ALTER TABLE emp ADD PRIMARY KEY (id);
+ALTER TABLE emp_add ADD PRIMARY KEY (id);
+ALTER TABLE emp_contact ADD PRIMARY KEY (id);
